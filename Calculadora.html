@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fundo{
+            background-image:url(https://static.wixstatic.com/media/41cba9_92b65d7de483402686cde3a707acf81f~mv2.jpg/v1/fill/w_1336,h_1002,al_c,q_90/41cba9_92b65d7de483402686cde3a707acf81f~mv2.webp.jpeg);
+            height: 100vh;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .nome{
+            position: absolute;
+            top: 95%;
+            right: 0;
+            color: white;
+        }
+        .calculadora{
+            color: white;
+            position: absolute;
+            background-color: rgba(255, 192, 203, 0.664);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 40px;
+            padding: 15px;
+        }
+        .bortao{
+            width: 50px;
+            height: 50px;
+            font-size: 40px;
+            cursor: pointer;
+            background-color: white;
+            border: none;
+            color: rgb(255, 110, 134);
+            margin: 2px;
+        }
+        .bortao:hover{
+            background-color: rgba(255, 110, 134, 0.459);
+        }
+        #resultado{
+            width: 207px;
+            background-color:rgb(255, 110, 134);
+            height: 30px;
+            margin: 5px;
+            font-size: 25px;
+            color: white;
+            text-align: right;
+            padding: 5px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="fundo">
+       <div class="nome">
+        <h2>Luisa Lima</h2>
+       </div>
+        <div class="calculadora">
+            <h1>Calculadora</h1>
+            <p id= "resultado"></p>
+            <table>
+                <tr>
+                    <td><button class="bortao" onclick="clean()">C</button></td>
+                    <td><button class="bortao" onclick="back()"><</button></td>
+                    <td><button class="bortao" onclick="inserir('/')">/</button></td>
+                    <td><button class="bortao" onclick="inserir('*')">x</button></td>
+                </tr>
+                <tr>
+                    <td><button class="bortao" onclick="inserir('7')">7</button></td>
+                    <td><button class="bortao" onclick="inserir('8')">8</button></td>
+                    <td><button class="bortao" onclick="inserir('9')">9</button></td>
+                    <td><button class="bortao" onclick="inserir('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="bortao"onclick="inserir('4')">4</button></td>
+                    <td><button class="bortao" onclick="inserir('5')">5</button></td>
+                    <td><button class="bortao" onclick="inserir('6')">6</button></td>
+                    <td><button class="bortao" onclick="inserir('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="bortao" onclick="inserir('1')">1</button></td>
+                    <td><button class="bortao" onclick="inserir('2')">2</button></td>
+                    <td><button class="bortao" onclick="inserir('3')">3</button></td>
+                    <td rowspan="2"><button class="bortao" style="height: 106px;" onclick= "calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="bortao" style="width: 106px;" onclick="inserir('0')">0</button></td>
+                    <td><button class="bortao" onclick="inserir('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        //essa serve para digitar o número na caixa de resultado
+        function inserir(number){
+            let numero = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = numero + number;
+        }
+        //essa serve para limpar a caixa
+        function clean(){
+            document.getElementById("resultado").innerHTML = "";
+        }
+        //essa serve para apagar um elemento de cada vez
+        function back(){
+            let resultado = document.getElementById("resultado").innerHTML
+            document.getElementById("resultado").innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        //essa serve para fazer as contas
+        function calcular(){
+            let resultado = document.getElementById("resultado").innerHTML
+            if(resultado){
+                document.getElementById("resultado").innerHTML = eval(resultado);
+            }
+            };  
+    </script>
+
+</body>
+</html>
